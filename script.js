@@ -12,9 +12,6 @@ function computerPlay() {
 
 
 
-
-
-
 function playround(playerSelection, computerSelection) { 
     if(playerSelection === computerSelection) { 
         return "It's a tie!"
@@ -33,16 +30,20 @@ function playround(playerSelection, computerSelection) {
     }
 }
 
+function game() {
+    for (let i = 0; i < 5; i++) { 
+        const playerSelection = "rock";  
+        const computerSelection = computerPlay();
+        console.log(computerSelection);
+        console.log(playround(playerSelection, computerSelection)); 
+    }
+}
+
+
+game(); 
 
 
 
-const computerSelection = computerPlay();  
-
-console.log(computerSelection);
-
-// const playerSelection = "scissors"; 
-
-console.log(playround(playerSelection, computerSelection)); 
 
 
 
