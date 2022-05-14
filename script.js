@@ -15,7 +15,7 @@ function computerPlay() {
 
 
 
-function playing(playerSelection, computerSelection) { 
+function playround(playerSelection, computerSelection) { 
     if(playerSelection === computerSelection) { 
         return "It's a tie!"
     } else if(playerSelection === "paper" && computerSelection === "rock") { 
@@ -40,9 +40,9 @@ const computerSelection = computerPlay();
 
 console.log(computerSelection);
 
-const playerSelection = "scissors"; 
+// const playerSelection = "scissors"; 
 
-console.log(playing(playerSelection, computerSelection)); 
+console.log(playround(playerSelection, computerSelection)); 
 
 
 
