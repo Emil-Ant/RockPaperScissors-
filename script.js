@@ -1,4 +1,4 @@
-const Choices = ["Rock", "Paper", "Scissors"]; 
+const Choices = ["rock", "paper", "scissors"]; 
 
 function computerPlays(Choices) {
   //generate random index from the array 
@@ -10,19 +10,33 @@ function computerPlays(Choices) {
 
 } 
 
-function userPlays(Choices) {
-    //generate random index from the array 
-    const userRandomIndex = [Math.floor(Math.random() * Choices.length)]; 
-    //retrieve item that corresponds to the generated index 
-    const userItem = Choices[userRandomIndex]; 
 
-    return userItem; 
-  
 
-} 
 
-const computerRound1 = computerPlays(Choices); 
-const playerRound1 = userPlays(Choices); 
+function playing(playerSelection, computerSelection) { 
+    if(playerSelection === computerSelection) { 
+        return "It's a tie!"
+    } else if(playerSelection === "paper" && computerSelection === "rock") { 
+        return "You win! Paper beats rock!"
+    } else if(playerSelection === "paper" && computerSelection === "scissors") { 
+        return "You lose! Scissors beats paper!" 
+    } else if(playerSelection === "rock" && computerSelection === "paper") { 
+        return "You lose! Paper beats rock!"
+    } else if(playerSelection === "rock" && computerSelection === "scissors") {
+        return "You win! Rock beats scissors!"
+    } else if(playerSelection === "scissors" && computerSelection === "paper") {
+        return "You win! Scissors beat scissors!"
+    } else if(playerSelection === "scissors" && computerSelection === "rock") { 
+        return "You lose! Rock beats scissors!"
+    }
+}
+
+// const computerSelection = computerPlays(Choices);  
+// const playerSelection = "rock"; 
+
+// console.log(computerPlays(Choices)); 
+
+// console.log(playing(playerSelection, computerSelection)); 
 
 
 
