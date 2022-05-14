@@ -1,6 +1,6 @@
 const Choices = ["rock", "paper", "scissors"]; 
 
-function computerPlays(Choices) {
+function computerPlay() {
   //generate random index from the array 
   const computerRandomIndex = [Math.floor(Math.random() * Choices.length)]; 
   //retrieve item that corresponds to the generated index 
@@ -9,6 +9,8 @@ function computerPlays(Choices) {
   return computerItem; 
 
 } 
+
+
 
 
 
@@ -25,19 +27,22 @@ function playing(playerSelection, computerSelection) {
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
         return "You win! Rock beats scissors!"
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beat scissors!"
+        return "You win! Scissors beat paper!"
     } else if(playerSelection === "scissors" && computerSelection === "rock") { 
         return "You lose! Rock beats scissors!"
     }
 }
 
-// const computerSelection = computerPlays(Choices);  
-// const playerSelection = "rock"; 
 
-// console.log(computerPlays(Choices)); 
 
-// console.log(playing(playerSelection, computerSelection)); 
 
+const computerSelection = computerPlay();  
+
+console.log(computerSelection);
+
+const playerSelection = "scissors"; 
+
+console.log(playing(playerSelection, computerSelection)); 
 
 
 
