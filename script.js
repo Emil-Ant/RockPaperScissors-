@@ -32,19 +32,14 @@ function playround(playerSelection, computerSelection) {
 
 function game() {
     for (let i = 0; i < 5; i++) { 
-        const playerSelection = "rock";  
-        const computerSelection = computerPlay();
-        console.log(computerSelection);
-        console.log(playround(playerSelection, computerSelection)); 
-    }
-}
+        let response = prompt("What are you selecting? select either rock, paper or scissors"); 
+         let playerSelection = response.toLowerCase();
+         const computerSelection = computerPlay();
+         console.log("Computer selected " + computerSelection);
+         console.log(playround(playerSelection, computerSelection)); 
+        }  
+    } 
 
 
 game(); 
-
-
-
-
-
-
 
