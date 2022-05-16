@@ -1,0 +1,1 @@
+A simple barebones version of rock, paper, scissors on the console, made to practice Javascript. 
