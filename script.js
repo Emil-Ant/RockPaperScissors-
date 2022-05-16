@@ -31,8 +31,8 @@ function playround(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) { 
-        let response = prompt("What are you selecting? select either rock, paper or scissors"); 
+    for(let i = 0; i < 5; i++) { 
+         let response = prompt("What are you selecting? select either rock, paper or scissors"); 
          let playerSelection = response.toLowerCase();
          const computerSelection = computerPlay();
          console.log("Computer selected " + computerSelection);
