@@ -46,9 +46,9 @@ function game() {
 const buttons = document.querySelectorAll("button"); 
 
 
-buttons.forEach((button) => { 
-    button.addEventListener('click', () => { 
-        console.log(button.id); 
-    });
-});
+// buttons.forEach((button) => { 
+//     button.addEventListener('click', () => { 
+//         console.log(button.id); 
+//     });
+// });
 
