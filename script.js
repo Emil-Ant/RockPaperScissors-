@@ -32,23 +32,44 @@ function playround(playerSelection, computerSelection) {
 
 
 
+
 function game() {
-    // for(let i = 0; i < 5; i++) { 
-         let response = prompt("What are you selecting? select either rock, paper or scissors"); 
-         let playerSelection = response.toLowerCase();
          const computerSelection = computerPlay();
          console.log("Computer selected " + computerSelection);
-         console.log(playround(playerSelection, computerSelection)); 
-        // }  
-    } 
 
 
-const buttons = document.querySelectorAll("button"); 
+         
+const buttons = document.querySelector('.buttons'); 
+
+buttons.addEventListener('click', function(e) { 
+    switch(e.target.id){ 
+        case 'Rock-button':
+          playerSelection = "rock"
+          let computerSelection = computerPlay(); 
+          console.log("Computer selection is " + computerSelection); 
+          console.log(playround(playerSelection, computerSelection)); 
+          break; 
+          
+          case 'Paper-button': 
+          playerSelection = "paper"
+          let computerSelection2 = computerPlay(); 
+          console.log("Computer selection is " + computerSelection2); 
+          console.log(playround(playerSelection, computerSelection2)); 
+          break;
+
+        case 'Scissors-button': 
+          playerSelection = "scissors"
+          let computerSelection3 = computerPlay(); 
+          console.log("Computer selection is " + computerSelection3); 
+          console.log(playround(playerSelection, computerSelection3)); 
+          break; 
+    }
+}); 
 
 
-buttons.forEach((button) => { 
-    button.addEventListener('click', () => { 
-    console.log(button.id); 
-    });
-});
+
+
+
+
+
 
