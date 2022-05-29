@@ -36,9 +36,9 @@ function playround(playerSelection, computerSelection) {
 function game() {
          const computerSelection = computerPlay();
          console.log("Computer selected " + computerSelection);
+}
 
 
-         
 const buttons = document.querySelector('.buttons'); 
 
 buttons.addEventListener('click', function(e) { 
