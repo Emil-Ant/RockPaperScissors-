@@ -1,4 +1,6 @@
 const Choices = ["rock", "paper", "scissors"]; 
+let playerScore = 0; 
+let computerScore = 0;
 
 function computerPlay() {
   //generate random index from the array 
@@ -24,64 +26,73 @@ parentDiv.appendChild(divResults);
 
 
 function playround(playerSelection, computerSelection) { 
-    if(playerSelection === computerSelection) { 
-        return "It's a tie!"
+    if (playerScore + computerScore == 5){ 
+        return;
+    } else if(playerSelection === computerSelection) { 
+            playerScore++
+            computerScore++
     } else if(playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats rock!"
-    } else if(playerSelection === "paper" && computerSelection === "scissors") { 
-        return "You lose! Scissors beats paper!" 
+            playerScore++
+           
+    } else if(playerSelection === "paper" && computerSelection === "scissors") {
+            computerScore++ 
+            
     } else if(playerSelection === "rock" && computerSelection === "paper") { 
-        return "You lose! Paper beats rock!"
+            computerScore++
+            
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats scissors!"
+            playerScore++
+           
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beat paper!"
+            playerScore++
+            
     } else if(playerSelection === "scissors" && computerSelection === "rock") { 
-        return "You lose! Rock beats scissors!"
+            computerScore++
+           
     }
-}
+    
+};
 
-
-function game() {
-    // for(let i = 0; i < 5; i++) { 
-         const computerSelection = computerPlay();
-         console.log("Computer selected " + computerSelection);
-         divResults.textContent = "Computer Selected " + computerSelection;
-        // }  
-    } 
-
-
+//TODO: make function that keeps score 
 
 
 
 const buttons = document.querySelector('.buttons'); 
 
 buttons.addEventListener('click', function(e) { 
-    switch(e.target.id){ 
-        case 'Rock-button':
-          playerSelection = "rock"
-          let computerSelection = computerPlay(); 
-          divComputerChoice.innerHTML = "The computer chose " + computerSelection; 
-          let finalOutput = playround(playerSelection, computerSelection)
-          divResults.innerHTML = finalOutput;  
-          break; 
-          
-          case 'Paper-button': 
-          playerSelection = "paper"
-          let computerSelection2 = computerPlay(); 
-          divComputerChoice.innerHTML = "The computer chose " + computerSelection2; 
-          let finalOutput2 = playround(playerSelection, computerSelection2)
-          divResults.innerHTML = finalOutput2;  
-          break;
-
-        case 'Scissors-button': 
-          playerSelection = "scissors"
-          let computerSelection3 = computerPlay(); 
-          divComputerChoice.innerHTML = "The computer chose " + computerSelection3; 
-          let finalOutput3 = playround(playerSelection, computerSelection3)
-          divResults.innerHTML = finalOutput3;  
-          break; 
+    if (playerScore + computerScore == 5){
+        console.log("game total is now 5 fam") 
+        return;
     }
+
+        switch(e.target.id){ 
+            case 'Rock-button':
+            playerSelection = "rock"
+            let computerSelection = computerPlay(); 
+            divComputerChoice.innerHTML = "The computer chose " + computerSelection; 
+            let finalOutput = playround(playerSelection, computerSelection)
+            divResults.innerHTML = finalOutput;  
+            console.log(playerScore, computerScore);
+            break; 
+            
+            case 'Paper-button': 
+            playerSelection = "paper"
+            let computerSelection2 = computerPlay(); 
+            divComputerChoice.innerHTML = "The computer chose " + computerSelection2; 
+            let finalOutput2 = playround(playerSelection, computerSelection2)
+            divResults.innerHTML = finalOutput2; 
+            console.log(playerScore, computerScore); 
+            break;
+
+            case 'Scissors-button': 
+            playerSelection = "scissors"
+            let computerSelection3 = computerPlay(); 
+            divComputerChoice.innerHTML = "The computer chose " + computerSelection3; 
+            let finalOutput3 = playround(playerSelection, computerSelection3)
+            divResults.innerHTML = finalOutput3;  
+            console.log(playerScore, computerScore);
+            break; 
+        }
 }); 
 
 
