@@ -1,14 +1,17 @@
 const Choices = ["rock", "paper", "scissors"]; 
 let playerScore = 0; 
 let computerScore = 0;
+let response; 
+let computerSelection;
+let round; 
+
 
 function computerPlay() {
   //generate random index from the array 
   const computerRandomIndex = [Math.floor(Math.random() * Choices.length)]; 
   //retrieve item that corresponds to the generated index 
-  const computerItem = Choices[computerRandomIndex]; 
-
-  return computerItem; 
+  computerSelection = Choices[computerRandomIndex]; 
+  return; 
 
 } 
 
@@ -16,85 +19,92 @@ function computerPlay() {
 const parentDiv = document.getElementById("parent");
 // create div for results in DOM tree
 const divComputerChoice = document.createElement("div"); 
-const divResults = document.createElement("div"); 
+const divResults = document.createElement("div");
+// const divResults = document.createElement("div"); 
 
 // Append div for results into DOM tree
 parentDiv.appendChild(divComputerChoice);
+// adds div for results (TODO : see if I can even use it )
 parentDiv.appendChild(divResults);
 
 
 
 
+
 function playround(playerSelection, computerSelection) { 
-    if (playerScore + computerScore == 5){ 
-        return;
-    } else if(playerSelection === computerSelection) { 
-            playerScore++
-            computerScore++
+      let tie = "It's a tie!"; 
+      let win = " ,you win!";
+      let lose = " ,you lose!";
+      let paperrock = "Paper beats rock";
+      let paperscissors = "Scissors beats paper";
+      let rockscissors = "Rock beats scissors";
+      if(playerSelection === computerSelection) { 
+        response = tie; 
+        return
+
     } else if(playerSelection === "paper" && computerSelection === "rock") {
-            playerScore++
+        response = paperrock + win;
+        console.log(response);
+        return
            
     } else if(playerSelection === "paper" && computerSelection === "scissors") {
-            computerScore++ 
+        response = paperscissors + lose; 
+        console.log(response);
+        return
             
     } else if(playerSelection === "rock" && computerSelection === "paper") { 
-            computerScore++
+        response = paperrock + lose; 
+        console.log(response);
+        return
             
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
-            playerScore++
-           
+        response = rockscissors + win;
+        console.log(response);
+        return
+
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
-            playerScore++
+        response = paperscissors + win;
+        console.log(response); 
+        return 
             
     } else if(playerSelection === "scissors" && computerSelection === "rock") { 
-            computerScore++
+        response = rockscissors + lose; 
+        console.log(response);
+        return
            
     }
-    
+
 };
 
 //TODO: make function that keeps score 
+function game() { 
+
+  playround()
+  
+
+}
 
 
-
+// event listeners 
 const buttons = document.querySelector('.buttons'); 
 
 buttons.addEventListener('click', function(e) { 
-    if (playerScore + computerScore == 5){
-        console.log("game total is now 5 fam") 
-        return;
-    }
-
         switch(e.target.id){ 
             case 'Rock-button':
             playerSelection = "rock"
-            let computerSelection = computerPlay(); 
-            divComputerChoice.innerHTML = "The computer chose " + computerSelection; 
-            let finalOutput = playround(playerSelection, computerSelection)
-            divResults.innerHTML = finalOutput;  
-            console.log(playerScore, computerScore);
             break; 
             
             case 'Paper-button': 
-            playerSelection = "paper"
-            let computerSelection2 = computerPlay(); 
-            divComputerChoice.innerHTML = "The computer chose " + computerSelection2; 
-            let finalOutput2 = playround(playerSelection, computerSelection2)
-            divResults.innerHTML = finalOutput2; 
-            console.log(playerScore, computerScore); 
+            playerSelection = "paper" 
             break;
 
             case 'Scissors-button': 
             playerSelection = "scissors"
-            let computerSelection3 = computerPlay(); 
-            divComputerChoice.innerHTML = "The computer chose " + computerSelection3; 
-            let finalOutput3 = playround(playerSelection, computerSelection3)
-            divResults.innerHTML = finalOutput3;  
-            console.log(playerScore, computerScore);
             break; 
         }
 }); 
 
+//TODO: add even listener to launch game at any click rather than launch computerplay() at each click 
 
 
 
