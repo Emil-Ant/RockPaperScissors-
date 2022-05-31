@@ -3,7 +3,8 @@ let playerScore = 0;
 let computerScore = 0;
 let response; 
 let computerSelection;
-let round; 
+let round = 0; 
+let gameChoices; 
 
 
 function computerPlay() {
@@ -30,45 +31,59 @@ parentDiv.appendChild(divResults);
 
 
 
-
-function playround(playerSelection, computerSelection) { 
+// function to play a round NOTE: playerSelection argument here only temporary before adding event listeners and all that jazz
+function playround(playerSelection) { 
+      computerPlay();  
       let tie = "It's a tie!"; 
       let win = " ,you win!";
       let lose = " ,you lose!";
       let paperrock = "Paper beats rock";
       let paperscissors = "Scissors beats paper";
       let rockscissors = "Rock beats scissors";
+
       if(playerSelection === computerSelection) { 
         response = tie; 
         return
 
     } else if(playerSelection === "paper" && computerSelection === "rock") {
         response = paperrock + win;
+        gameChoices = "PAPERROCK";
+        console.log(gameChoices);
         console.log(response);
         return
            
     } else if(playerSelection === "paper" && computerSelection === "scissors") {
         response = paperscissors + lose; 
+        gameChoices = "PAPERSCISSORS";
+        console.log(gameChoices);
         console.log(response);
         return
             
     } else if(playerSelection === "rock" && computerSelection === "paper") { 
         response = paperrock + lose; 
+        gameChoices = "ROCKPAPER";
+        console.log(gameChoices);
         console.log(response);
         return
             
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
         response = rockscissors + win;
+        gameChoices = "ROCKSCISSORS";
+        console.log(gameChoices);
         console.log(response);
         return
 
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
         response = paperscissors + win;
+        gameChoices = "SCISSORSPAPER"
+        console.log(gameChoices);
         console.log(response); 
         return 
             
     } else if(playerSelection === "scissors" && computerSelection === "rock") { 
         response = rockscissors + lose; 
+        gameChoices = "SCISSORSROCK"
+        console.log(gameChoices);
         console.log(response);
         return
            
@@ -76,11 +91,12 @@ function playround(playerSelection, computerSelection) {
 
 };
 
-//TODO: make function that keeps score 
+//TODO major: make function that keeps score 
 function game() { 
 
   playround()
-  
+//round++ 
+//TODO inside: Basically catch gameChoices and for all gameChoices scenarios in favor of the player add a point for them and vice versa for the CPU
 
 }
 
