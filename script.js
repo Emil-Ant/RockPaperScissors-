@@ -4,7 +4,11 @@ let computerScore = 0;
 let response; 
 let computerSelection;
 let round = 0; 
+let roundDisplay = document.querySelector(".totalRoundDisplay");
 let gameChoices; 
+let resultAnnounce;
+let playerDisplay = document.querySelector(".playerDisplay"); 
+let computerDisplay = document.querySelector(".computerDisplay");
 
 
 function computerPlay() {
@@ -16,23 +20,11 @@ function computerPlay() {
 
 } 
 
-// set parentDiv to the div class "buttons"
-const parentDiv = document.getElementById("parent");
-// create div for results in DOM tree
-const divComputerChoice = document.createElement("div"); 
-const divResults = document.createElement("div");
-// const divResults = document.createElement("div"); 
-
-// Append div for results into DOM tree
-parentDiv.appendChild(divComputerChoice);
-// adds div for results (TODO : see if I can even use it )
-parentDiv.appendChild(divResults);
-
 
 
 
 // function to play a round NOTE: playerSelection argument here only temporary before adding event listeners and all that jazz
-function playround(playerSelection) { 
+function playround() { 
       computerPlay();  
       let tie = "It's a tie!"; 
       let win = " ,you win!";
@@ -48,43 +40,31 @@ function playround(playerSelection) {
     } else if(playerSelection === "paper" && computerSelection === "rock") {
         response = paperrock + win;
         gameChoices = "PAPERROCK";
-        console.log(gameChoices);
-        console.log(response);
         return
            
     } else if(playerSelection === "paper" && computerSelection === "scissors") {
         response = paperscissors + lose; 
         gameChoices = "PAPERSCISSORS";
-        console.log(gameChoices);
-        console.log(response);
         return
             
     } else if(playerSelection === "rock" && computerSelection === "paper") { 
         response = paperrock + lose; 
         gameChoices = "ROCKPAPER";
-        console.log(gameChoices);
-        console.log(response);
         return
             
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
         response = rockscissors + win;
         gameChoices = "ROCKSCISSORS";
-        console.log(gameChoices);
-        console.log(response);
         return
 
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
         response = paperscissors + win;
         gameChoices = "SCISSORSPAPER"
-        console.log(gameChoices);
-        console.log(response); 
         return 
             
     } else if(playerSelection === "scissors" && computerSelection === "rock") { 
         response = rockscissors + lose; 
         gameChoices = "SCISSORSROCK"
-        console.log(gameChoices);
-        console.log(response);
         return
            
     }
@@ -93,10 +73,34 @@ function playround(playerSelection) {
 
 //TODO major: make function that keeps score 
 function game() { 
+    playround()
+    round++;
+    roundDisplay.textContent = "Total number of rounds: " + round;
+    if(gameChoices == "PAPERROCK" || gameChoices == "ROCKSCISSORS" || gameChoices == "SCISSORSPAPER" ) { 
+        playerScore++;
+        playerDisplay.textContent = "Your score is " + playerScore;
+    } else if(gameChoices == "PAPERSCISSORS" || gameChoices == "ROCKPAPER" || gameChoices == "SCISSORSROCK" ) { 
+        computerScore++;
+        computerDisplay.textContent = "Computer score is " + computerScore
+    }
+    if(round == 5) { 
+        if(playerScore > computerScore) { 
+            resultAnnounce = "You have won against the PC! Amazing";
+        } else if(playerScore < computerScore) { 
+            resultAnnounce = "Damn, you lost against the CPU, that's some cheeeese";
+        } else if (playerscore == computerScore) { 
+            resultAnnounce = "It's a draw!"
+        }
+    alert(resultAnnounce); 
+    round = 0; 
+    roundDisplay.textContent = "";
+    playerScore = 0;
+    playerDisplay.textContent = "";
+    computerScore = 0;
+    computerDisplay.textContent = "";
+    return resultAnnounce;
+    }
 
-  playround()
-//round++ 
-//TODO inside: Basically catch gameChoices and for all gameChoices scenarios in favor of the player add a point for them and vice versa for the CPU
 
 }
 
@@ -120,6 +124,7 @@ buttons.addEventListener('click', function(e) {
         }
 }); 
 
+buttons.addEventListener("click", () => game());
 //TODO: add even listener to launch game at any click rather than launch computerplay() at each click 
 
 
